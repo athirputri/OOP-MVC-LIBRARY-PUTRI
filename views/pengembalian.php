@@ -18,24 +18,26 @@ include('templates/header.php') ?>
                         <th>NO</th>
                         <th>TITLE</th>
                         <th>AUTHOR</th>
-                        <th>YEAR</th>
+                        <th>PEMINJAM</th>
                         <th>BORROW AT</th>
                         <th>RETURN</th>
-                        <th>STATUS</th>
+                        <th>DENDA</th>
                         <th>KEMBALI</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach ($data3 as $list) : ?>
                     <tr>
                         <td><?= $number++ ?></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?= $list->getTitle() ?></td>
+                        <td><?= $list->getAuthor() ?></td>
+                        <td><?= $list->getName()?></td>
+                        <td><?= $list->getBorrow() ?></td>
+                        <td><?= $list->getReturn() ?></td>
                         <td></td>
                         <td><button class="btn btn-sm btn-primary mx-3">Kembalikan buku</button></td>
                     </tr>
+                    <?php endforeach ?>
                 </tbody>
             </table>
         </div>

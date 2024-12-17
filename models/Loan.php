@@ -2,11 +2,11 @@
 require_once 'config/database.php';
 
 class Loan{
-    private $id,$author, $title, $book_id, $user_id, $borrow_date, $return_date, $fine, $return_date_real;
-
+    private $id,$name, $author, $title, $book_id, $user_id, $borrow_date, $return_date, $fine, $return_date_real;
+    
     static function get(){
         global $pdo;
-        $query = $pdo->query("SELECT loan.id, books.title, books.author, loan.borrow_date, loan.return_date FROM loan JOIN books ON books.id=loan.book_id JOIN users ON users.id=loan.user_id");
+        $query = $pdo->query("SELECT loan.id, users.name, books.title, books.author, loan.borrow_date, loan.return_date FROM loan JOIN books ON books.id=loan.book_id JOIN users ON users.id=loan.user_id");
         return $query->fetchAll(PDO::FETCH_CLASS, 'Loan');
     }
     
@@ -51,4 +51,8 @@ class Loan{
     function getReturn(){
         return $this->return_date;
     }
+    function getName(){
+        return $this->name;
+    }
+    
 }
